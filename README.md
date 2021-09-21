@@ -25,13 +25,16 @@ How to Use:
 
   
 ## Screenshots
+
 ### Home Page
 <p align="center">
-  <img src='Screenshot (649).jpg'/>
+  <img src='Screenshot (649).png'/>
 </p>
+
 ### Output page
+
 <p align="center">
-  <img src='Screenshot (653).jpg'/>
+  <img src='Screenshot (653).png'/>
 </p>
 
   
