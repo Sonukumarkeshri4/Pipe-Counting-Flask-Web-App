@@ -25,8 +25,14 @@ How to Use:
 
   
 ## Screenshots
-
-
+### Home Page
+<p align="center">
+  <img src='Screenshot (649).jpg'/>
+</p>
+### Output page
+<p align="center">
+  <img src='Screenshot (653).jpg'/>
+</p>
 
   
 ## Features
