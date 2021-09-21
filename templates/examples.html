@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <!-- Google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500;700&family=Roboto&family=Source+Sans+Pro&display=swap" rel="stylesheet">
+
+  <!-- icons ke liye -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+
+  <!-- Apna Stylesheet and favicon, created from favicon.cc -->
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <link rel="icon" href="/static/img/favicon.ico">
+
+  <title>Pipe Counting | Sonu</title>
+</head>
+
+<body>
+
+
+  <nav class="navbar navbar-expand-md navbar-light bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><b>PiCO</b></a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <ul class="navbar-nav ms-auto nav justify-content-end">
+
+          <li class="nav-item"><a class="nav-link"  href="/"> Home </a> </li>
+
+
+          
+
+          <li class="nav-item"> <a class="nav-link active" aria-current="page" href="/examples.html"> Examples
+            </a> </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <br><br>
+<center><h1>Documentation</h1></center>
+<br>
+
+
+
+<div class="python">
+<pre >
+    <code >
+import cv2
+import numpy as np
+
+
+def MyImage():
+    img = cv2.imread("image_name.extension")
+    cv2.imshow('original',img)
+    cv2.waitKey()
+    return img
+
+
+def circleDetection(image):
+    detector = cv2.SimpleBlobDetector_create()
+
+    keypoints = detector.detect(image)
+
+    blank = np.zeros((1,1))
+    blobs = cv2.drawKeypoints(image,keypoints,blank,(0,0,255),cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
+
+    number_of_blobs = len(keypoints)
+
+    text = "total number of blobs:" + str(len(keypoints))
+
+    cv2.putText(blobs, text, (20,550), cv2.FONT_HERSHEY_SIMPLEX, 1, (100, 0, 255), 2)
+    #cv2.imshow('blobs using default parameters',blobs)
+    #cv2.waitKey()
+
+    params = cv2.SimpleBlobDetector_Params()
+
+    params.minThreshold = 10;
+
+    params.maxThreshold = 200;
+    params.filterByArea = True
+    params.minArea =400
+
+    params.filterByCircularity = True
+
+    params.minCircularity = 0.1
+    params.filterByConvexity = True
+    params.minConvexity = 0.8
+
+    params.filterByInertia = True
+    params.minInertiaRatio = 0.01
+
+
+    detector = cv2.SimpleBlobDetector_create(params)
+
+    keypoints = detector.detect(image)
+    blank = np.zeros((1,1))
+    blobs = cv2.drawKeypoints(image,keypoints,blank,(0,255,0),cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
+
+    number_of_blobs = len(keypoints)
+
+    text = "number of pipes:" + str(len(keypoints))
+    print(text)
+    cv2.putText(blobs, text, (5,40), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 2)
+    cv2.imshow('filtering circular blobs only',blobs)
+    cv2.waitKey()
+
+    cv2.destroyAllWindows()
+    return keypoints
+
+
+
+
+def rectDetection(img):
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+  
+    # Find Canny edges
+    edged = cv2.Canny(gray, 10, 35)
+    cv2.waitKey(0)
+      
+    cv2.imshow('Canny Edges After Contouring', edged)
+    cv2.waitKey(0)
+    
+          
+        
+
+
+    
+def main():
+    image=MyImage()
+    circles = circleDetection(image)
+    #rectDetection(image)
+
+if __name__ == "__main__":
+    main()
+
+
+    </code>
+</div>
+</pre>
+
+
+<H3>OUTPUT </H3>
+<div class="python">
+    <br>
+    <code> C:\Users\HP\AppData\Local\Programs\Python\Python39\python.exe E:/sonuKeshri/main.py</code>
+    <br>
+    <code>The number of pipes: 122</code>
+    <br><br>
+    <code>Process finished with exit code 0</code>
+<br><br>
+<div class="row">
+
+    <div class="col-lg-6 col-md-6 col-sm-6">
+        <img class="final_image" src="/static/img/Screenshot (629).png" alt="">
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6">
+        <img class="final_image" src="/static/img/Screenshot (630).png" alt="">
+    </div>
+   
+</div>
+
+<br><br>
+</div>
+
+<br><br>
+
+
+
+
+
+
+<div class="" id="footer_section">
+    <div class="footer_section_data">
+  
+  <div class="row">
+  
+  <div class="col-lg-4 col-md-4 col-sm-4">
+    <h5 class="footer_headings"><b>MADE with 💚 BY</b> </h5>
+    <br>
+    <p>Sonu Kumar Keshri</p>
+    <p>NIT Patna</p>
+    <p>Rally to Tally</p>
+    <br><br>
+  </div>
+  
+  <div class="col-lg-4 col-md-4 col-sm-4">
+    <h5 class="footer_headings"><b>FOLLOW ME</b> </h5>
+    <br>
+    <p><i class="fab fa-facebook-f"></i> <i class="fab fa-instagram"></i> <i class="fab fa-linkedin-in"></i></p>
+  
+  <br><br>
+  </div>
+  
+  <div class="col-lg-4 col-md-4 col-sm-4">
+    <h5 class="footer_headings"><b>CONTACT ME</b> </h5>
+    <br>
+    <p>+91 7004043711</p>
+    <p>sonukumarkeshri79@gmail.com</p>
+    <p>Thank You</p>
+    <br><br>
+  </div>
+  
+  </div>
+  
+    </div>
+  </div>
+<!-- footer section ends -->
+
+
+
+  <!-- Optional JavaScript; choose one of the two! -->
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <!--
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+   -->
+  <!-- Option 2: Separate Popper and Bootstrap JS -->
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+
+ 
+</body>
+
+</html>

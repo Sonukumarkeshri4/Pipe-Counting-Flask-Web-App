@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <!-- Google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500;700&family=Roboto&family=Source+Sans+Pro&display=swap" rel="stylesheet">
+
+  <!-- icons ke liye -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- Apna Stylesheet and favicon, created from favicon.cc -->
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <link rel="icon" href="/static/img/favicon.ico">
+
+  <title>Pipe Counting | Sonu</title>
+
+  <!-- I dont know why its not working in css file, so putting it here -->
+  <style>
+  
+  input[type = submit] {
+   background: #212121;
+  background-image: -webkit-linear-gradient(top, #212121, #080808);
+  background-image: -moz-linear-gradient(top, #212121, #080808);
+  background-image: -ms-linear-gradient(top, #212121, #080808);
+  background-image: -o-linear-gradient(top, #212121, #080808);
+  background-image: linear-gradient(to bottom, #212121, #080808);
+  -webkit-border-radius: 9;
+  -moz-border-radius: 9;
+  border: none;
+  border-radius: 9px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: #ffffff;
+  font-size: 24px;
+  padding: 5px 20px 5px 20px;
+  text-decoration: none;
+   
+    cursor: pointer;
+  }
+  input[type = submit]:hover{
+    background: #e09a04;
+  text-decoration: none;
+  }
+  
+
+
+ 
+h1 span {
+  position: relative;
+  top: 10px;
+  display: inline-block;
+  animation: bounce .3s ease infinite alternate;
+  font-family: sans-serif;
+  
+  color: #FFF;
+  text-shadow: 0 1px 0 #CCC,
+               0 2px 0 #CCC,
+               0 6px 0 transparent,
+               0 7px 0 transparent,
+               0 8px 0 transparent,
+               0 9px 0 transparent,
+               0 10px 10px rgba(0, 0, 0, .4);
+}
+
+h1 span:nth-child(2) { animation-delay: .1s; }
+h1 span:nth-child(3) { animation-delay: .2s; }
+h1 span:nth-child(4) { animation-delay: .3s; }
+h1 span:nth-child(5) { animation-delay: .4s; }
+/* h1 span:nth-child(6) { animation-delay: .5s; }
+h1 span:nth-child(7) { animation-delay: .6s; }
+h1 span:nth-child(8) { animation-delay: .7s; } */
+
+@keyframes bounce {
+  100% {
+    top: -2px;
+    text-shadow: 0 1px 0 #CCC,
+                 0 2px 0 #CCC,
+                 0 3px 0 #CCC,
+                 0 50px 25px rgba(0, 0, 0, .2);
+  }
+}
+ 
+
+
+
+  </style>
+
+ 
+</head>
+
+<body>
+
+
+  <nav class="navbar navbar-expand-md navbar-light bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><b>PiCO</b></a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <ul class="navbar-nav ms-auto nav justify-content-end">
+
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="/"> Home </a> </li>
+
+
+          
+
+          <li class="nav-item"> <a class="nav-link" href="examples.html"> Examples
+            </a> </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <br><br>
+  <h1>
+    <span>P</span>
+    <span>i</span>
+    <span>p</span>
+    <span>e</span>
+    <span>- </span>
+    <span>c</span>
+    <span>o</span>
+    <span>u</span>
+    <span>n</span>
+    <span>t</span>
+    <span>e</span>
+    <span>r</span>
+  </h1>
+
+
+
+<br><br>
+<div class="container-fluid">
+<div class="row">
+
+
+  <div class="col-lg-9 col-md-9 col-sm-9 main_column">
+    <br>
+    <h3>Choose the image for detection. See examples for hint.</h3>
+    <br>
+
+
+
+    <form method="POST" action="{{url_for('home')}}" enctype="multipart/form-data"  onsubmit="
+    if(form_being_submitted) {
+      alert('The form is being submitted, please wait a moment...');
+      myButton.disabled = true;
+      return false;
+    }
+    if(checkForm(this)) {
+      myButton.value = 'Submitting form...';
+      form_being_submitted = true;
+      return true;
+    }
+    return false;
+  ">
+    <label for="formFileLg" class="form-label">Choose high quality image</label>
+
+    <input class="form-control form-control-lg" id="formFileLg" name="file" type="file" accept="image/png, image/jpeg" 
+    onchange="loadFile(event)" /> 
+    
+    
+    <hr>
+    <!-- <input type="file"  accept="image/*" name="" id="file"  onchange="loadFile(event)" >
+    <img id="output" width="200" /> -->
+    <br>
+    <input type = "submit" value = "COUNT"  />
+    
+    <br>
+  </form>
+
+
+    <img id="output" class="final_image" src="/static/img/Screenshot (629).png" alt="" >
+   
+   
+      <div style="background-color: #080808;  text-align: left;padding: 2%;"><code ><h4>Example Output</h4></code></div>
+      <img  class="final_image" src="/static/img/Screenshot (630).png"  alt="">
+    
+   
+
+  </div>
+ 
+
+
+
+  <div class="col-lg-3 col-md-3 col-sm-3 side_column">
+    <br>
+    <p>If you don't have images, download following images and test.</p>
+    
+    <img class="final_image2" src="/static/img/pipes.jpeg" alt="">
+    <hr>
+    <img class="final_image2" src="/static/img/Hydraulic-Stainless-Steel-Pipes-Nice-Price.jpg" alt="">
+    <hr>
+    <img class="final_image2" src="/static/img/pile-old-rusty-round-metal-industrial-pipe-steel-pipe-stack-warehouse-factory-industrial-material-metal-corrosion-stack-rusty-tube-old-iron-pipe-warehouse-metal-pipe-industry_33867-1832.jpg" alt="">
+    <hr>
+    <img class="final_image2" src="/static/img/Socket-pipe-stacking-machine.jpg" alt="">
+    <hr>
+    <img class="final_image2" src="/static/img/water_pipes_cover1.jpg" alt="">
+    <hr>
+
+  </div>
+</div>
+</div>
+
+
+
+
+<br><br><br>
+
+
+
+
+<div class="" id="footer_section">
+  <div class="footer_section_data">
+
+<div class="row">
+
+<div class="col-lg-4 col-md-4 col-sm-4">
+  <h5 class="footer_headings"><b>MADE with 💚 BY</b> </h5>
+  <br>
+  <p>Sonu Kumar Keshri</p>
+  <p>NIT Patna</p>
+  <p>Rally to Tally</p>
+  <br><br>
+</div>
+
+<div class="col-lg-4 col-md-4 col-sm-4">
+  <h5 class="footer_headings"><b>FOLLOW ME</b> </h5>
+  <br>
+  <p><i class="fab fa-facebook-f"></i> <i class="fab fa-instagram"></i> <i class="fab fa-linkedin-in"></i></p>
+
+<br><br>
+</div>
+
+<div class="col-lg-4 col-md-4 col-sm-4">
+  <h5 class="footer_headings"><b>CONTACT ME</b> </h5>
+  <br>
+  <p>+91 7004043711</p>
+  <p>sonukumarkeshri79@gmail.com</p>
+  <p>Thank You</p>
+  <br><br>
+</div>
+
+</div>
+
+  </div>
+</div>
+
+
+<!-- footer section ends -->
+
+<script>
+
+
+
+  var loadFile = function(event) {
+    var image = document.getElementById('output');
+    image.src = URL.createObjectURL(event.target.files[0]);
+  };
+
+</script>
+ 
+<script type="text/javascript">
+
+  var form_being_submitted = false; // global variable
+
+  function checkForm(form)
+  {
+    if(form.file.value == "") {
+      alert("Please enter image and keep it below 4 mb");
+      form.file.focus();
+      return false;
+    }
+   
+    return true;
+  }
+
+  function resetForm(form)
+  {
+    form.myButton.disabled = false;
+    form.myButton.value = "Submit";
+    form_being_submitted = false;
+  }
+
+</script>
+ 
+
+
+  <!-- Optional JavaScript; choose one of the two! -->
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <!--
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+   -->
+  <!-- Option 2: Separate Popper and Bootstrap JS -->
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+
+ 
+</body>
+
+</html>

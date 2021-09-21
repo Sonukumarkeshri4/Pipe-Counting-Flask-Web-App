@@ -1,0 +1,117 @@
+body{
+  margin: 0;
+  background-color: rgb(61, 61, 61) ;
+  color: white;
+  text-align: center;
+  font-family: sans-serif;
+}
+
+
+
+.container-fluid{
+  padding: 0 15%;
+}
+.navbar-brand{
+  font-size: 2rem !important;
+  font-family: serif;
+  color: #f5f5f5 !important;
+}
+.navbar-brand:hover{
+  color: #aaaaaa !important;
+}
+.nav-link{
+  font-size: 1.5rem !important;
+  font-family: Montserrat !important;
+  color:#f5f5f5 !important;
+}
+.nav-link:hover{
+  color: #aaaaaa !important;
+}
+
+.navbar-toggler {
+  border-color: rgb(202, 202, 202) !important;
+}
+/* Setting the stroke to green using rgb values (0, 128, 0) */
+
+ .navbar-toggler-icon {
+  background-image: url(
+"data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 128, 0, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E") !important;
+}
+
+.main_column{
+  background-color: rgb(71, 71, 71) ;
+
+}
+
+
+.side_column{
+
+ border: 2px solid rgb(87, 86, 86);
+}
+
+
+
+
+#formFileLg{
+  background-color: rgb(24, 24, 24);
+  color: #aaaaaa;
+}
+
+
+
+
+
+.final_image{
+  max-width: 100%;
+  max-height: 100%;
+  padding: 5%;
+}
+
+.final_image2{
+  max-width: 100%;
+  max-height: 100%;
+  padding: 1%;
+  opacity: 0.5;
+}
+.final_image2:hover{
+  opacity: 0.9;
+}
+
+
+
+
+#footer_section{
+  padding: 5% 0;
+  background-color: rgb(41, 41, 41) ;
+}
+.footer_section_data{
+
+    padding: 0 25%;
+    padding-top: 3%;
+}
+
+i{
+  padding:2% 5%;
+}
+
+.footer_headings{
+  font-size: 12px;
+  font-weight: 900 !important;
+}
+
+
+
+
+
+.python{
+  padding:0 2%;
+  width: 75%;
+  margin: 0 auto;
+  border-radius: 20;
+  background-color: rgb(29, 29, 29);
+  text-align: left;
+}
+
+code{
+  color: #f5f5f5;
+}
